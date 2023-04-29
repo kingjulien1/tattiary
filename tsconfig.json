@@ -19,17 +19,13 @@
         "name": "next"
       }
     ],
+    "baseUrl": "./",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["*"],
+      "@/lib/hooks/*": ["lib/hooks/*"],
+      "@/lib/utils/*": ["lib/hooks/*"]
     }
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    "app/page.jsx",
-    "app/layout.jsx"
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/page.js", "app/layout.js"],
   "exclude": ["node_modules"]
 }
