@@ -23,7 +23,7 @@ function Button() {
  */
 function Menu() {
   return (
-    <ul tabIndex={0} className="py-2 space-y-2 dropdown-content menu menu-compact shadow bg-base-100 rounded-box w-52">
+    <ul tabIndex={0} className="py-2 dropdown-content menu menu-compact shadow bg-base-100 rounded-box w-52">
       {Object.keys(groups).map((group) => (
         <Group key={group} name={group} />
       ))}
