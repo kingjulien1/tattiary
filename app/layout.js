@@ -1,4 +1,6 @@
 import Navbar from "@components/navbar"
+import { themeChange } from "theme-change"
+
 import "./globals.css"
 
 export const metadata = {
@@ -8,10 +10,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html data-theme="coffee" lang="en">
+    <html data-theme="pastel" lang="en">
       <body>
         <Navbar />
-        {children}
+        <main className="lg:p-4 h-screen">{children}</main>
       </body>
     </html>
   )
