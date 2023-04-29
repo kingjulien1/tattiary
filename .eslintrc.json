@@ -1,5 +1,5 @@
 {
   "extends": "next/core-web-vitals",
   "plugins": ["react"],
-  "rules": { "react/no-children-prop": [0], "react/jsx-key": [3] }
+  "rules": { "react/no-children-prop": [0], "react/jsx-key": [0] }
 }
