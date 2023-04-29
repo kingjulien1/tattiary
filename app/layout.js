@@ -1,11 +1,10 @@
-import "./globals.css";
-import Navbar from "@/components/navbar";
+import { Navbar } from "@/components/navbar"
+import "./globals.css"
 
 export const metadata = {
   title: "tattiary",
-  description:
-    "Platform for tattoo artists & shops to announce residencies & guestspots",
-};
+  description: "Platform for tattoo artists & shops to announce residencies & guestspots",
+}
 
 export default function RootLayout({ children }) {
   return (
@@ -15,5 +14,5 @@ export default function RootLayout({ children }) {
         {children}
       </body>
     </html>
-  );
+  )
 }
