@@ -3,7 +3,9 @@ import Link from "next/link"
 /**
  * component to toggle / drop down navigation menu
  */
-export default Navigation = () => <div className="dropdown" children={[<Button />, <Menu />]} />
+export default function Navigation() {
+  return <div className="dropdown" children={[<Button />, <Menu />]} />
+}
 
 /**
  * trigger to drop down the {@link Menu} component when hovered
