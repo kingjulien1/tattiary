@@ -1,7 +1,9 @@
 /**
  * manually apply custom color theme to layout
  */
-export default () => <div className="dropdown dropdown-bottom dropdown-end dropdown-hover" children={[<Button />, <Menu />]} />
+export default function ThemePicker() {
+  return <div className="dropdown dropdown-bottom dropdown-end dropdown-hover" children={[<Button />, <Menu />]} />
+}
 
 /**
  * trigger to drop down the {@link Menu} component when hovered
