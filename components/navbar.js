@@ -7,10 +7,16 @@ import Navigation from "./dropdown/navigation"
  */
 export default function Navbar() {
   return (
-    <nav className="navbar md:px-4 lg:px-8">
+    <nav className="navbar md:px-4">
       <div className="navbar-start" children={<Navigation />} />
-      <div className="navbar-center font-xs" children={<Link className="btn btn-ghost normal-case text-lg font-medium" href="/" children="tttiary.com" />} />
+      <div className="navbar-center font-xs" children={<Brand children="tttiary.com" />} />
       <div className="navbar-end" children={<ThemePicker />} />
     </nav>
   )
 }
+
+/**
+ * center piece of navigation bar displaying service name
+ * @todo append to / replace with logo
+ */
+const Brand = ({ children }) => <Link href="/" className="btn btn-ghost normal-case text-lg font-medium" children={children} />
