@@ -1,5 +1,4 @@
 import Navbar from "@components/navbar"
-import { themeChange } from "theme-change"
 
 import "./globals.css"
 
@@ -10,7 +9,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html data-theme="pastel" lang="en">
+    <html data-theme="retro" lang="en">
       <body>
         <Navbar />
         <main className="h-screen">{children}</main>

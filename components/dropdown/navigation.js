@@ -1,10 +1,11 @@
+import classNames from "@utils/classnames"
 import Link from "next/link"
 
 /**
  * component to toggle / drop down navigation menu
  */
 export default function Navigation() {
-  return <div className="dropdown" children={[<Button />, <Menu />]} />
+  return <div className="dropdown dropdown-bottom dropdown-start dropdown-hover" children={[<Button />, <Menu />]} />
 }
 
 /**
@@ -12,7 +13,7 @@ export default function Navigation() {
  */
 function Button() {
   return (
-    <label tabIndex={0} className="btn btn-ghost btn-square">
+    <label tabIndex={0} className="btn btn-ghost mb-2">
       <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path d="M3 4.5h14.25M3 9h9.75M3 13.5h9.75m4.5-4.5v12m0 0l-3.75-3.75M17.25 21L21 17.25" />
       </svg>
@@ -25,7 +26,7 @@ function Button() {
  */
 function Menu() {
   return (
-    <ul tabIndex={0} className="py-2 w-52 dropdown-content menu shadow bg-base-100 rounded-box">
+    <ul tabIndex={0} className="p-2 w-52 rounded-box border-none dropdown-content menu menu-compact bg-base-200 hover:ring-2 hover:ring-neutral">
       {Object.keys(groups).map((group) => (
         <Group key={group} name={group} />
       ))}
@@ -34,21 +35,17 @@ function Menu() {
 }
 
 /**
- * combine / associate related resources into groups with a title of the topic of relation
+ * combine related resources into groups with headings describing relation topic
  * @todo show resources based on authentication state
  * @todo select active item with router
  */
 export function Group({ name }) {
-  const isFirst = name === Object.keys(groups)[0]
-
   return (
     <>
-      {!isFirst && <div className="divider m-0" />}
-
       <li className="menu-title" children={<span className="font-medium" children={name} />} />
 
       {groups[name].map((group) => (
-        <Item {...group} isActive={group.name === "discover"} show={!group.isProtected} />
+        <li key={group} children={<Item {...group} isActive={group.name === "discover"} show={!group.isProtected} />} />
       ))}
     </>
   )
@@ -57,16 +54,12 @@ export function Group({ name }) {
 /**
  * group item linking to a resource
  */
-export function Item({ name, href, path, isActive, show }) {
-  if (!show) return null
-
+export function Item({ className, name, href, path, isActive, show }) {
   return (
-    <li>
-      <Link href={href} className={isActive ? "active" : ""}>
-        <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" children={<path d={path} />} />
-        {name}
-      </Link>
-    </li>
+    <Link href={href} className={classNames(className, { active: isActive, hidden: !show })}>
+      <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" children={<path d={path} />} />
+      {name}
+    </Link>
   )
 }
 

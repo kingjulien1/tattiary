@@ -9,7 +9,6 @@ export default function Navbar() {
   return (
     <nav className="navbar md:px-4">
       <div className="navbar-start" children={<Navigation />} />
-      <div className="navbar-center font-xs" children={<Brand children="tttiary.com" />} />
       <div className="navbar-end" children={<ThemePicker />} />
     </nav>
   )
@@ -19,4 +18,4 @@ export default function Navbar() {
  * center piece of navigation bar displaying service name
  * @todo append to / replace with logo
  */
-const Brand = ({ children }) => <Link href="/" className="btn btn-ghost normal-case text-lg font-medium" children={children} />
+const Brand = ({ children }) => <Link href="/" className="btn btn-ghost normal-case teuxt-lg font-medium" children={children} />
