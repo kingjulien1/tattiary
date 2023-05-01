@@ -3,9 +3,9 @@ import classNames from "@utils/classnames"
 /**
  * manually apply custom color theme to layout
  */
-export default function ThemePicker() {
-  return <div className="dropdown -open dropdown-bottom dropdown-end dropdown-hover group" children={[<Button key="button" />, <Menu key="menu" />]} />
-}
+const ThemePicker = () => <div className="dropdown -open dropdown-bottom dropdown-end dropdown-hover group" children={[<Button key="button" />, <Menu key="menu" />]} />
+
+export default ThemePicker
 
 /**
  * trigger to drop down {@link Menu} menu
