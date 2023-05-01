@@ -3,7 +3,7 @@ import classNames from "@utils/classnames"
 /**
  * apply from a list of predefined color themes
  */
-const ThemePicker = () => <div className="dropdown -open dropdown-bottom dropdown-end dropdown-hover group" children={[<Button key="button" />, <Menu key="menu" />]} />
+const ThemePicker = () => <div className="dropdown dropdown-bottom dropdown-end dropdown-hover group" children={[<Button key="button" />, <Menu key="menu" />]} />
 
 export default ThemePicker
 
@@ -34,13 +34,13 @@ function Menu() {
 }
 
 /**
- *
+ * showcase style & color palette of given theme { @param {string} name }
  */
 function Theme({ name }) {
   return (
-    <button className="overflow-hidden rounded-lg" data-set-theme={name} data-act-class="[&amp;_svg]:visible">
-      <div data-theme={name} className="grid grid-rows-2 bg-transparent text-inherit hover:text-base-content hover:bg-base-200">
-        <div className="col-span-5 row-span-2 row-start-1 flex gap-2 py-2 px-4 justify-between">
+    <button className="overflow-hidden rounded-lg w-full" data-set-theme={name} data-act-class="[&amp;_svg]:visible">
+      <div data-theme={name} className="grid grid-cols-5 grid-rows-3 text-inherit bg-base-100">
+        <div className="col-span-5 row-span-3 row-start-1 flex gap-2 py-3 px-4 justify-between">
           <span className="text-xs font-semibold" children={name} />
           <Palette />
         </div>
@@ -50,7 +50,7 @@ function Theme({ name }) {
 }
 
 /**
- * showcase theme color palette
+ * exhibit color set of color theme set by { @see Theme } parent
  */
 function Palette() {
   return (

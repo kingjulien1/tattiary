@@ -7,7 +7,7 @@ export const metadata = {
   description: "Platform for tattoo artists & shops to announce residencies & guestspots",
 }
 
-export default function RootLayout({ children }) {
+export default function Root({ children }) {
   return (
     <html data-theme="retro" lang="en">
       <body>
