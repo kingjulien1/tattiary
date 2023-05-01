@@ -39,9 +39,9 @@ function Menu() {
 function Theme({ name }) {
   return (
     <button className="overflow-hidden rounded-lg" data-set-theme={name} data-act-class="[&amp;_svg]:visible">
-      <div data-theme={name} className="grid grid-rows-2 bg-base text-base-content hover:bg-base-200">
+      <div data-theme={name} className="grid grid-rows-2 bg-transparent text-inherit hover:text-base-content hover:bg-base-200">
         <div class="col-span-5 row-span-2 row-start-1 flex gap-2 py-2 px-4 justify-between">
-          <span className="text-xs font-bold" children={name} />
+          <span className="text-xs font-semibold" children={name} />
           <Palette />
         </div>
       </div>
