@@ -1,14 +1,14 @@
 import classNames from "@utils/classnames"
 
 /**
- * manually apply custom color theme to layout
+ * apply from a list of predefined color themes
  */
 const ThemePicker = () => <div className="dropdown -open dropdown-bottom dropdown-end dropdown-hover group" children={[<Button key="button" />, <Menu key="menu" />]} />
 
 export default ThemePicker
 
 /**
- * trigger to drop down {@link Menu} menu
+ * trigger to drop { @see Menu } list of color themes
  */
 function Button() {
   return (
@@ -34,7 +34,7 @@ function Menu() {
 }
 
 /**
- * indiviual, appliable color theme
+ *
  */
 function Theme({ name }) {
   return (

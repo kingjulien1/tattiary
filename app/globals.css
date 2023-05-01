@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply bg-gradient-to-br from-primary to-secondary -mt-[4rem] grid place-items-center items-end pt-20;
+  html {
+    @apply bg-gradient-to-br from-primary to-secondary -mt-[4rem] pt-20;
   }
 }

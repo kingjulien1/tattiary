@@ -3,14 +3,14 @@ import Link from "next/link"
 import resources from "./links.json"
 
 /**
- * main navigation solution linking most relevant resources
+ * refer to most relevant resources
  */
 const Navigation = () => <div className="dropdown dropdown-bottom dropdown-start dropdown-hover group transition-color ease-in-out duration-300" children={[<Button key="button" />, <Menu key="menu" />]} />
 
 export default Navigation
 
 /**
- * trigger to drop down {@link Menu} menu
+ * trigger to drop { @see Menu } list of resources
  */
 function Button() {
   return (
@@ -23,7 +23,7 @@ function Button() {
 }
 
 /**
- * main navigation menu linking most important resources
+ * list of accessible resources { @see resources data source }
  */
 function Menu() {
   return (
@@ -36,7 +36,8 @@ function Menu() {
 }
 
 /**
- * combine related resources into groups with headings describing mutual topic @param topic
+ * combine related resources into groups of shared { @param {string} topic } topic
+ *
  * @todo show resources based on authentication state
  * @todo select active item with router
  */
@@ -52,14 +53,15 @@ function Group({ topic }) {
 }
 
 /**
- * menu item linking resource @param href location
- * @param bool isActive true if current- & resource location same
+ * describe resource & link { @param {string} location } location
+ *
+ * @param {bool} isActive true when @param {string} location is same as router location state
  */
 const Item = ({ name, location, icon, ...rest }) => <Link href={location} className="rounded-md" {...rest} children={[<Icon shape={icon} />, name]} />
 
 /**
- * creates uniformed svg icons with {@param path} shape
- * @param string svg path shape
+ * creates uniformed svg icons by wrapping a given { @param {string} shape } shape
+ *
  * @todo support multiple paths
  */
 const Icon = ({ shape }) => <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" children={<path d={shape} />} />

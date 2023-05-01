@@ -11,21 +11,12 @@ export default function RootLayout({ children }) {
   return (
     <html data-theme="retro" lang="en">
       <body>
-        <Navbar />
+        <nav className="navbar md:px-4">
+          <div className="navbar-start" children={<Navigation />} />
+          <div className="navbar-end" children={<ThemePicker />} />
+        </nav>
         <main className="h-screen">{children}</main>
       </body>
     </html>
-  )
-}
-
-/**
- * responsive navigation bar to be used on very top of root layout ({@link app/layout.js})
- */
-function Navbar() {
-  return (
-    <nav className="navbar md:px-4">
-      <div className="navbar-start" children={<Navigation />} />
-      <div className="navbar-end" children={<ThemePicker />} />
-    </nav>
   )
 }
