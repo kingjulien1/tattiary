@@ -1,8 +1,10 @@
+import classNames from "@utils/classnames"
+
 /**
  * manually apply custom color theme to layout
  */
 export default function ThemePicker() {
-  return <div className="dropdown dropdown-bottom dropdown-end dropdown-hover group" children={[<Button key="button" />, <Menu key="menu" />]} />
+  return <div className="dropdown -open dropdown-bottom dropdown-end dropdown-hover group" children={[<Button key="button" />, <Menu key="menu" />]} />
 }
 
 /**
@@ -36,10 +38,12 @@ function Menu() {
  */
 function Theme({ name }) {
   return (
-    <button className="outline-base-content overflow-hidden rounded-lg text-left" data-set-theme={name} data-act-class="[&amp;_svg]:visible">
-      <div data-theme={name} className="px-4 py-2 bg-primary text-primary-content w-full cursor-pointer font-sans hover:bg-primary-focus">
-        <div className="pl-8 flex-grow text-sm font-bold">{name}</div>
-        <Palette />
+    <button className="overflow-hidden rounded-lg" data-set-theme={name} data-act-class="[&amp;_svg]:visible">
+      <div data-theme={name} className="grid grid-rows-2 bg-base text-base-content hover:bg-base-200">
+        <div class="col-span-5 row-span-2 row-start-1 flex gap-2 py-2 px-4 justify-between">
+          <span className="text-xs font-bold" children={name} />
+          <Palette />
+        </div>
       </div>
     </button>
   )
@@ -50,8 +54,10 @@ function Theme({ name }) {
  */
 function Palette() {
   return (
-    <div className="flex flex-shrink-0 flex-wrap gap-1 h-full">
-      <div className="bg-primary w-2 rounded"></div> <div class="bg-secondary w-2 rounded"></div> <div className="bg-accent w-2 rounded"></div> <div className="bg-neutral w-2 rounded"></div>
+    <div class="flex flex-shrink-0 flex-wrap gap-1 h-full">
+      {["primary", "secondary", "accent"].map((color) => (
+        <div className={classNames(`bg-${color}`, "w-2 rounded")} />
+      ))}
     </div>
   )
 }

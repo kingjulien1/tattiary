@@ -6,7 +6,7 @@ import links from "./links.json"
  * main navigation solution linking most relevant resources
  */
 export default function Navigation() {
-  return <div className="dropdown dropdown-bottom dropdown-start dropdown-hover group" children={[<Button key="button" />, <Menu key="menu" />]} />
+  return <div className="dropdown dopdown-open dropdown-bottom dropdown-start dropdown-hover group" children={[<Button key="button" />, <Menu key="menu" />]} />
 }
 
 /**
@@ -14,7 +14,7 @@ export default function Navigation() {
  */
 function Button() {
   return (
-    <label tabIndex={0} className="btn btn-ghost mb-2 group-hover:bg-base-200 hover:ring-2 hover:ring-neutral">
+    <label tabIndex={0} className="btn btn-square btn-ghost mb-2 group-hover:bg-base-200 hover:ring-2 hover:ring-neutral">
       <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path d="M3 4.5h14.25M3 9h9.75M3 13.5h9.75m4.5-4.5v12m0 0l-3.75-3.75M17.25 21L21 17.25" />
       </svg>
@@ -41,9 +41,12 @@ function Menu() {
  * @todo select active item with router
  */
 export function Group({ name }) {
+  const isFirst = name === Object.keys(links)[0]
+  const isLast = name === Object.keys(links)[Object.keys(links).length]
+
   return (
     <>
-      <li className="mt-2 mb-1 menu-title capitalize" children={<span className="font-medium" children={name} />} />
+      <li className={classNames("mt-1 menu-title capitalize", { hidden: isFirst })} children={<span className="font-medium" children={name} />} />
       {links[name].map((group) => (
         <li key={group} children={<Item {...group} isActive={group.name === "discover"} show={!group.isProtected} />} />
       ))}
@@ -57,7 +60,7 @@ export function Group({ name }) {
 export function Item({ className, name, href, path, isActive, show }) {
   return (
     <Link href={href} className={classNames(className, { active: isActive, hidden: !show })}>
-      <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" children={<path d={path} />} />
+      <svg className="h-4 w-4 hover:rotate-45" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" children={<path d={path} />} />
       {name}
     </Link>
   )
