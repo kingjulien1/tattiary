@@ -1,6 +1,6 @@
-import Navbar from "@components/navbar"
-
 import "./globals.css"
+import Navigation from "./navigation"
+import ThemePicker from "./theming"
 
 export const metadata = {
   title: "tattiary",
@@ -15,5 +15,17 @@ export default function RootLayout({ children }) {
         <main className="h-screen">{children}</main>
       </body>
     </html>
+  )
+}
+
+/**
+ * responsive navigation bar to be used on very top of root layout ({@link app/layout.js})
+ */
+function Navbar() {
+  return (
+    <nav className="navbar md:px-4">
+      <div className="navbar-start" children={<Navigation />} />
+      <div className="navbar-end" children={<ThemePicker />} />
+    </nav>
   )
 }
