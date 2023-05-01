@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html data-theme="bumblebee" lang="en">
+    <html data-theme="retro" lang="en">
       <body>
         <Navbar />
         <main className="h-screen">{children}</main>

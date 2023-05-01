@@ -40,7 +40,7 @@ function Theme({ name }) {
   return (
     <button className="overflow-hidden rounded-lg" data-set-theme={name} data-act-class="[&amp;_svg]:visible">
       <div data-theme={name} className="grid grid-rows-2 bg-transparent text-inherit hover:text-base-content hover:bg-base-200">
-        <div class="col-span-5 row-span-2 row-start-1 flex gap-2 py-2 px-4 justify-between">
+        <div className="col-span-5 row-span-2 row-start-1 flex gap-2 py-2 px-4 justify-between">
           <span className="text-xs font-semibold" children={name} />
           <Palette />
         </div>
@@ -54,7 +54,7 @@ function Theme({ name }) {
  */
 function Palette() {
   return (
-    <div class="flex flex-shrink-0 flex-wrap gap-1 h-full">
+    <div className="flex flex-shrink-0 flex-wrap gap-1 h-full">
       {["primary", "secondary", "accent"].map((color) => (
         <div className={classNames(`bg-${color}`, "w-2 rounded")} />
       ))}
