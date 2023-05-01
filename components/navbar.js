@@ -13,9 +13,3 @@ export default function Navbar() {
     </nav>
   )
 }
-
-/**
- * center piece of navigation bar displaying service name
- * @todo append to / replace with logo
- */
-const Brand = ({ children }) => <Link href="/" className="btn btn-ghost normal-case teuxt-lg font-medium" children={children} />
