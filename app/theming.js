@@ -3,7 +3,7 @@ import classNames from "@utils/classnames"
 /**
  * apply from a list of predefined color themes
  */
-const ThemePicker = () => <div className="dropdown dropdown-bottom dropdown-end dropdown-hover group" children={[<Button key="button" />, <Menu key="menu" />]} />
+const ThemePicker = () => <div className="dropdown dropdown-bottom dropdown-end dropdown-hover group grid" children={[<Button key="button" />, <Menu key="menu" />]} />
 
 export default ThemePicker
 
@@ -21,43 +21,46 @@ function Button() {
 }
 
 /**
- * list of appliable color themes
+ * list of applicable olor themes
  */
 function Menu() {
   return (
-    <ul tabIndex={0} className="p-2 w-48 space-y-2 dropdown-content menu menu-compact bg-base-200 rounded-box border-none hover:ring-2 hover:ring-neutral">
+    <ul className="w-52 p-2 space-y-2 rounded-box border-none dropdown-content menu menu-compact bg-base-200 hover:ring-2 hover:ring-neutral">
       {["autumn", "pastel", "luxury", "cyberpunk"].map((theme) => (
-        <Theme key={theme} name={theme} />
+        <li key={theme} children={<Theme key={theme} name={theme} />} />
       ))}
     </ul>
   )
 }
 
 /**
- * showcase style & color palette of given theme { @param {string} name }
+ * applicable color theme { @param {string} name }
  */
 function Theme({ name }) {
   return (
-    <button className="overflow-hidden rounded-lg w-full" data-set-theme={name} data-act-class="[&amp;_svg]:visible">
-      <div data-theme={name} className="grid grid-cols-5 grid-rows-3 text-inherit bg-base-100">
-        <div className="col-span-5 row-span-3 row-start-1 flex gap-2 py-3 px-4 justify-between">
-          <span className="text-xs font-semibold" children={name} />
-          <Palette />
-        </div>
-      </div>
-    </button>
+    <div className="overflow-hidden rounded-box w-full">
+      <span className="text-xs capitalize font-sans font-semibold" children={name} />
+      <Palette theme={name} />
+    </div>
   )
 }
 
 /**
- * exhibit color set of color theme set by { @see Theme } parent
+ * showcase theme { @see Theme } color set
  */
-function Palette() {
+function Palette({ theme }) {
+  const backgrounds = Array.from(["primary", "secondary", "accent", "neutral"], (color) => `bg-${color}`)
   return (
-    <div className="flex flex-shrink-0 flex-wrap gap-1 h-full">
-      {["primary", "secondary", "accent"].map((color) => (
-        <div className={classNames(`bg-${color}`, "w-2 rounded")} />
+    <div data-theme={theme} className="flex flex-row gap-1 rounded py-1 px-2 bg-transparent">
+      {backgrounds.map((background) => (
+        <div key={background} className={classNames(background, "h-4 w-2 rounded")} />
       ))}
     </div>
   )
 }
+/**
+ *
+      {["primary", "secondary", "accent", "neutral"].map((color) => (
+        <div key={color} className={classNames(`bg-${color}`, "h-4 w-2 rounded")} />
+      ))}
+ */

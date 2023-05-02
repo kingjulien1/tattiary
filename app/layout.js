@@ -9,13 +9,13 @@ export const metadata = {
 
 export default function Root({ children }) {
   return (
-    <html data-theme="retro" lang="en">
-      <body>
-        <nav className="navbar md:px-4">
+    <html lang="en" data-theme="autumn" className="m-0">
+      <body className="h-screen">
+        <nav className="py-2 md:px-4 navbar sticky">
           <div className="navbar-start" children={<Navigation />} />
           <div className="navbar-end" children={<ThemePicker />} />
         </nav>
-        <main className="h-screen">{children}</main>
+        {children}
       </body>
     </html>
   )

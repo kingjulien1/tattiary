@@ -5,7 +5,7 @@ import resources from "./links.json"
 /**
  * refer to most relevant resources
  */
-const Navigation = () => <div className="dropdown dropdown-bottom dropdown-start dropdown-hover group transition-color ease-in-out duration-300" children={[<Button key="button" />, <Menu key="menu" />]} />
+const Navigation = () => <div className="dropdown dropdown-bottom dropdown-start dropdown-hover group grid" children={[<Button key="button" />, <Menu key="menu" />]} />
 
 export default Navigation
 
@@ -27,7 +27,7 @@ function Button() {
  */
 function Menu() {
   return (
-    <ul tabIndex={0} className="w-52 p-2 space-y-2 rounded-box border-none dropdown-content menu menu-compact bg-base-200 hover:ring-2 hover:ring-neutral">
+    <ul className="w-52 p-2 space-y-2 rounded-box border-none dropdown-content menu menu-compact bg-base-200 hover:ring-2 hover:ring-neutral">
       {Object.keys(resources).map((topic) => (
         <Group key={topic} topic={topic} />
       ))}
@@ -57,7 +57,7 @@ function Group({ topic }) {
  *
  * @param {bool} isActive true when @param {string} location is same as router location state
  */
-const Item = ({ name, location, icon, ...rest }) => <Link href={location} className="rounded-md" {...rest} children={[<Icon shape={icon} />, name]} />
+const Item = ({ name, location, icon, ...rest }) => <Link href={location} className="rounded-md" {...rest} children={[<Icon key="icon" shape={icon} />, name]} />
 
 /**
  * creates uniformed svg icons by wrapping a given { @param {string} shape } shape
