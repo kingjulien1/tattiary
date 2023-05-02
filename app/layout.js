@@ -2,6 +2,7 @@ import Link from "next/link"
 import "./globals.css"
 import Navigation from "./navigation"
 import ThemePicker from "./theming"
+import Providers from "./providers"
 
 export const metadata = {
   title: "tattiary",
@@ -12,9 +13,11 @@ export default function Root({ children }) {
   return (
     <html lang="en" data-theme="coffee">
       <body>
-        <Toolbar />
-        <main className="h-screen mb-40" children={children} />
-        <Footer />
+        <Providers>
+          <Toolbar />
+          <main className="h-screen mb-40" children={children} />
+          <Footer />
+        </Providers>
       </body>
     </html>
   )

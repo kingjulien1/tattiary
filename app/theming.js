@@ -1,4 +1,8 @@
+"use client"
+
 import classNames from "@utils/classnames"
+import { useTheme } from "next-themes"
+import { useEffect } from "react"
 
 /**
  * apply from a list of predefined color themes
@@ -37,11 +41,13 @@ function Menu() {
  * applicable color theme { @param {string} name }
  */
 function Theme({ name }) {
+  const { setTheme, theme } = useTheme()
+
   return (
-    <div className="overflow-hidden rounded-box w-full">
+    <button className="overflow-hidden rounded-box w-full" onClick={() => setTheme(name)}>
       <span className="text-xs capitalize font-sans font-semibold" children={name} />
       <Palette theme={name} />
-    </div>
+    </button>
   )
 }
 
