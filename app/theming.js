@@ -58,9 +58,3 @@ function Palette({ theme }) {
     </div>
   )
 }
-/**
- *
-      {["primary", "secondary", "accent", "neutral"].map((color) => (
-        <div key={color} className={classNames(`bg-${color}`, "h-4 w-2 rounded")} />
-      ))}
- */
