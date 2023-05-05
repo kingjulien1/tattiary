@@ -11,11 +11,11 @@ export const metadata = {
 
 export default function Root({ children }) {
   return (
-    <html lang="en" data-theme="coffee">
+    <html lang="en">
       <body>
         <Providers>
           <Toolbar />
-          <main className="h-screen mb-40" children={children} />
+          <main className="min-h-screen mb-40" children={children} />
           <Footer />
         </Providers>
       </body>
@@ -47,7 +47,7 @@ function Footer() {
       <Footer.Section title="Legal">
         <Footer.Link href="/terms" children="Terms of Service" />
         <Footer.Link href="/privacy-policy" children="Privacy Policy" />
-        <Footer.Link href="/terms" children="Terms of Service" />
+        <Footer.Link href="/cookie-policy" children="Cookie Policy" />
       </Footer.Section>
       <Footer.Section title="Company">
         <Footer.Link href="/about" children="About us" />

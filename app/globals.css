@@ -1,3 +1,42 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .dropdown > label {
+    @apply btn btn-square btn-ghost mb-2 group-hover:bg-base-200 hover:ring-2 hover:ring-neutral;
+  }
+
+  .dropdown > label > svg {
+    @apply h-6 w-6;
+  }
+
+  .dropdown > ul {
+    @apply w-52 p-2 space-y-2 rounded-box border-none menu menu-compact bg-base-200 hover:ring-2 hover:ring-neutral;
+  }
+
+  .menu-title {
+    @apply capitalize font-medium;
+  }
+
+  .dropdown > ul > li * svg {
+    @apply h-4 w-4;
+  }
+
+  .dropdown > ul > li * button {
+    @apply overflow-hidden rounded-box w-full;
+  }
+}
+
+@layer utilities {
+  /* For Webkit-based browsers (Chrome, Safari and Opera) */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* For IE, Edge and Firefox */
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
