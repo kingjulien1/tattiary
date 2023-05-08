@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    @apply selection:bg-accent selection:text-accent-content;
+  }
+}
+
 @layer components {
   .dropdown > label {
     @apply btn btn-square btn-ghost mb-2 group-hover:bg-base-200 hover:ring-2 hover:ring-neutral;
@@ -11,8 +17,9 @@
     @apply h-6 w-6;
   }
 
-  .dropdown > ul {
-    @apply w-52 p-2 space-y-2 rounded-box border-none menu menu-compact bg-base-200 hover:ring-2 hover:ring-neutral;
+  .dropdown > ul,
+  .dropdown > div {
+    @apply w-52 p-2 space-y-2 rounded-box border-none menu menu-compact bg-base-200 hover:ring-2 hover:ring-neutral shadow-2xl;
   }
 
   .menu-title {

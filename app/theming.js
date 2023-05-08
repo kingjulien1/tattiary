@@ -22,14 +22,24 @@ const Button = () => <label className="group-hover:bg-base-200" children={<Icon 
  */
 function Menu() {
   return (
-    <div className="w-52 max-h-64 p-2 space-y-2 overflow-y-auto flex flex-col rounded-box border-none dropdown-content menu menu-compact bg-base-200 hover:ring-2 hover:ring-neutral scrollbar-hide">
+    <div className="max-h-64 overflow-y-auto dropdown-content scrollbar-hide">
       <ul className="grid grid-cols-1 gap-2">
-        {["autumn", "pastel", "coffee", "emerald", "bumblebee", "luxury", "cyberpunk", "cupcake", "synthwave", "corporate", "retro", "valentine"].map(theme => (
-          <li key={theme} children={<Theme key={theme} name={theme} />} />
-        ))}
+        <Themes />
       </ul>
     </div>
   )
+}
+
+function Themes() {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) return <li className="px-2 py-1 text-center text-xs font-sans font-semibold" children="loading themes..." />
+
+  return ["autumn", "pastel", "coffee", "emerald", "bumblebee", "luxury", "cyberpunk", "cupcake", "synthwave", "corporate", "retro", "valentine", "night", "halloween", "dracula", "forest"].map(theme => <li key={theme} children={<Theme key={theme} name={theme} />} />)
 }
 
 /**
@@ -37,14 +47,9 @@ function Menu() {
  */
 function Theme({ name }) {
   const { setTheme, theme } = useTheme()
-  const [current, setCurrent] = useState()
-
-  useEffect(() => {
-    if (!!theme) setCurrent(theme)
-  }, [theme])
 
   return (
-    <a onClick={() => setTheme(name)} className={classNames({ active: name === theme }, "flex flex-row justify-between")}>
+    <a onClick={() => setTheme(name)} className={classNames({ active: name === theme }, "flex flex-row justify-between rounded-md")}>
       <span className="text-xs capitalize font-sans font-semibold" children={name} />
       <Palette theme={name} />
     </a>
