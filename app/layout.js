@@ -1,11 +1,12 @@
+import Dropdown from "@components/dropdown"
+import Icon from "@components/icon"
+import classNames from "@utils/classnames"
+import group from "@utils/group"
 import Link from "next/link"
 import "./globals.css"
-import Navigation from "./navigation"
-import ThemePicker from "./theming"
+import { footer, navbar } from "./links.json"
 import Providers from "./providers"
-import Icon from "@components/icon"
-import { footer } from "./links.json"
-import group from "@utils/group"
+import Themes from "./theming"
 
 export const metadata = {
   title: "tattiary",
@@ -18,7 +19,7 @@ export default function Root({ children }) {
       <body>
         <Providers>
           <main className="min-h-screen">
-            <Toolbar />
+            <Navbar />
             {children}
           </main>
           <Footer />
@@ -30,24 +31,48 @@ export default function Root({ children }) {
 
 /**
  * navigation bar on very top of layout
+ * @uses Themes client component waiting for theme context provided by {@see Providers }
  */
-function Toolbar() {
+function Navbar() {
+  const links = group(navbar, "group")
+
   return (
     <div className="sticky top-0 z-30 py-2 flex h-16 w-full justify-center bg-opacity-90 backdrop-blur transition-all duration-100">
       <nav className="py-2 md:px-4 navbar sticky">
-        <div className="navbar-start" children={<Navigation />} />
-        <div className="navbar-end" children={<ThemePicker />} />
+        <div className="navbar-start">
+          <Dropdown className="dropdown-bottom dropdown-start">
+            <Dropdown.Button children={<Icon shape="M3 4.5h14.25M3 9h9.75M3 13.5h9.75m4.5-4.5v12m0 0l-3.75-3.75M17.25 21L21 17.25" />} />
+            <Dropdown.Menu>
+              {Object.keys(links).map(topic => (
+                <>
+                  <Dropdown.Menu.Title children={topic} />
+                  {links[topic].map(({ name, location, icon, isPublic }) => (
+                    <li key={name} className={classNames({ hidden: !isPublic })}>
+                      <Link href={location} children={[<Icon shape={icon} />, name]} />
+                    </li>
+                  ))}
+                </>
+              ))}
+            </Dropdown.Menu>
+          </Dropdown>
+        </div>
+        <div className="navbar-end">
+          <Dropdown className="dropdown-bottom dropdown-end">
+            <Dropdown.Button children={<Icon shape="M4.098 19.902a3.75 3.75 0 005.304 0l6.401-6.402M6.75 21A3.75 3.75 0 013 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 003.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008z" />} />
+            <Dropdown.Menu className="max-h-64 overflow-y-auto dropdown-content scrollbar-hide" children={<Themes />} />
+          </Dropdown>
+        </div>
       </nav>
     </div>
   )
 }
 
-const links = group(footer, "group")
-
 /**
  * navigation & resource section on very end of layout
  */
 function Footer() {
+  const links = group(footer, "group")
+
   return (
     <footer className="p-10 footer bg-base-200">
       <div>
