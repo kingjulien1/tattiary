@@ -1,16 +1,11 @@
 import Dropdown from "@components/dropdown"
 import Icon from "@components/icon"
 import classNames from "@utils/classnames"
+import group from "@utils/group"
 import Link from "next/link"
 import { navbar } from "./links.json"
 
-const links = navbar.reduce(
-  (grouped, link) => ({
-    ...grouped,
-    [link.group]: [...(grouped[link.group] || []), link],
-  }),
-  {}
-)
+const links = group(navbar, "group")
 
 export default function Navigation() {
   return (
@@ -22,7 +17,7 @@ export default function Navigation() {
             <Dropdown.Menu.Title children={topic} />
             {links[topic].map(({ name, location, icon, isPublic }) => (
               <li key={name} className={classNames({ hidden: !isPublic })}>
-                <Link href={location} className="rounded-md" children={[<Icon shape={icon} />, name]} />
+                <Link href={location} children={[<Icon shape={icon} />, name]} />
               </li>
             ))}
           </>

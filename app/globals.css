@@ -32,6 +32,9 @@
   .dropdown > ul > li * button {
     @apply overflow-hidden rounded-box w-full;
   }
+  .dropdown > ul > li > a {
+    @apply rounded-md;
+  }
 }
 
 @layer utilities {
