@@ -3,8 +3,9 @@ import Icon from "@components/icon"
 import classNames from "@utils/classnames"
 import group from "@utils/group"
 import Link from "next/link"
+import { Fragment } from "react"
 import "./globals.css"
-import { footer, navbar } from "./links.json"
+import links from "./links.json"
 import Providers from "./providers"
 import Themes from "./theming"
 
@@ -19,10 +20,10 @@ export default function Root({ children }) {
       <body>
         <Providers>
           <main className="min-h-screen">
-            <Navbar />
+            <Navbar links={group(links.navbar, "group")} />
             {children}
           </main>
-          <Footer />
+          <Footer links={group(links.footer, "group")} />
         </Providers>
       </body>
     </html>
@@ -33,9 +34,7 @@ export default function Root({ children }) {
  * navigation bar on very top of layout
  * @uses Themes client component waiting for theme context provided by {@see Providers }
  */
-function Navbar() {
-  const links = group(navbar, "group")
-
+function Navbar({ links }) {
   return (
     <div className="sticky top-0 z-30 py-2 flex h-16 w-full justify-center bg-opacity-90 backdrop-blur transition-all duration-100">
       <nav className="py-2 md:px-4 navbar sticky">
@@ -44,14 +43,14 @@ function Navbar() {
             <Dropdown.Button children={<Icon shape="M3 4.5h14.25M3 9h9.75M3 13.5h9.75m4.5-4.5v12m0 0l-3.75-3.75M17.25 21L21 17.25" />} />
             <Dropdown.Menu>
               {Object.keys(links).map(topic => (
-                <>
+                <Fragment key={topic}>
                   <Dropdown.Menu.Title children={topic} />
                   {links[topic].map(({ name, location, icon, isPublic }) => (
                     <li key={name} className={classNames({ hidden: !isPublic })}>
-                      <Link href={location} children={[<Icon shape={icon} />, name]} />
+                      <Link href={location} children={[<Icon shape={icon} key="icon" />, name]} />
                     </li>
                   ))}
-                </>
+                </Fragment>
               ))}
             </Dropdown.Menu>
           </Dropdown>
@@ -70,9 +69,7 @@ function Navbar() {
 /**
  * navigation & resource section on very end of layout
  */
-function Footer() {
-  const links = group(footer, "group")
-
+function Footer({ links }) {
   return (
     <footer className="p-10 footer bg-base-200">
       <div>
@@ -83,10 +80,10 @@ function Footer() {
         </div>
       </div>
       {Object.keys(links).map(topic => (
-        <div>
+        <div key={topic}>
           <span className="footer-title" children={topic} />
           {links[topic].map(({ name, location }) => (
-            <Link href={location} className="link link-hover" children={name} />
+            <Link key={location} href={location} className="link link-hover" children={name} />
           ))}
         </div>
       ))}

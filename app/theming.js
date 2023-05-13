@@ -4,9 +4,11 @@ import classNames from "@utils/classnames"
 import { useTheme } from "next-themes"
 import { useEffect, useState } from "react"
 
-const themes = ["autumn", "pastel", "coffee", "emerald", "bumblebee", "luxury", "cyberpunk", "cupcake", "synthwave", "corporate", "retro", "valentine", "night", "halloween", "dracula", "forest"]
+const themes = ["light", "dark", "cupcake", "bumblebee", "emerald", "corporate", "synthwave", "retro", "cyberpunk", "valentine", "halloween", "garden", "forest", "aqua", "lofi", "pastel", "fantasy", "wireframe", "black", "luxury", "dracula", "cmyk", "autumn", "business", "acid", "lemonade", "night", "coffee", "winter"]
+
 /**
- * theme picker menu
+ * list of applicable themes
+ * @link ./Providers.js waiting for context to show active theme
  */
 export default function Themes() {
   const { setTheme, theme } = useTheme()
