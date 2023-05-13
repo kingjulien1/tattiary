@@ -10,7 +10,7 @@
 
 @layer components {
   .dropdown > label {
-    @apply btn btn-square btn-ghost mb-2 hover:ring-2 hover:ring-neutral;
+    @apply btn btn-square btn-ghost mb-2 hover:ring-2 hover:ring-primary;
   }
 
   .dropdown > label > svg {
@@ -18,11 +18,11 @@
   }
 
   .dropdown-content {
-    @apply w-52 p-2 space-y-2 rounded-box border-none menu menu-compact bg-base-200 hover:ring-2 hover:ring-neutral shadow-2xl;
+    @apply w-52 p-2 space-y-2 rounded-box border-none menu menu-compact bg-base-200 hover:ring-2 hover:ring-primary shadow-2xl;
   }
 
   .menu-title {
-    @apply capitalize font-medium;
+    @apply capitalize;
   }
 
   .dropdown > ul > li * svg {
