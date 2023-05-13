@@ -1,22 +1,20 @@
 "use client"
 
+import useMount from "@hooks/useMount"
 import classNames from "@utils/classnames"
 import { useTheme } from "next-themes"
-import { useEffect, useState } from "react"
-
-const themes = ["light", "dark", "cupcake", "bumblebee", "emerald", "corporate", "synthwave", "retro", "cyberpunk", "valentine", "halloween", "garden", "forest", "aqua", "lofi", "pastel", "fantasy", "wireframe", "black", "luxury", "dracula", "cmyk", "autumn", "business", "acid", "lemonade", "night", "coffee", "winter"]
 
 /**
  * list of applicable themes
- * @link ./Providers.js waiting for context to show active theme
+ *
+ * @link https://daisyui.com/docs/themes/ docs
+ * @param {array<string>} themes
  */
-export default function Themes() {
+export default function Themes({ themes }) {
   const { setTheme, theme } = useTheme()
-  const [mounted, setMounted] = useState(false)
+  const isMounted = useMount()
 
-  useEffect(() => setMounted(true), [])
-
-  if (!mounted) return <div className="p-2 text-center text-xs font-sans font-semibold" children="loading themes..." />
+  if (!isMounted) return <div className="p-2 text-center text-xs font-sans font-semibold" children="loading themes..." />
 
   return (
     <ul className="grid grid-cols-1 gap-2">
