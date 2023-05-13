@@ -6,6 +6,11 @@
   html {
     @apply selection:bg-accent selection:text-accent-content;
   }
+  footer * svg {
+    @apply h-8 w-8;
+    fill: currentColor;
+    stroke: none;
+  }
 }
 
 @layer components {
