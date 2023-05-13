@@ -11,11 +11,13 @@ export const metadata = {
 
 export default function Root({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="m-0">
       <body>
         <Providers>
-          <Toolbar />
-          <main className="min-h-screen mb-40" children={children} />
+          <main className="min-h-screen">
+            <Toolbar />
+            {children}
+          </main>
           <Footer />
         </Providers>
       </body>

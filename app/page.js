@@ -1,3 +1,3 @@
 export default function Landing() {
-  return <main className="h-full mt-[4rem] grid place-items-center items-end "></main>
+  return <div className="h-full grid place-items-center items-end "></div>
 }
